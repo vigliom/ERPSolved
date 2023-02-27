@@ -1,0 +1,96 @@
+
+<form class="form-horizontal"
+action="#"
+      th:object="${userForm}"
+      th:action="${userForm.id != 0} ? @{/user/edit/submit} : @{/user/new/submit}"
+      enctype="multipart/form-data"
+      method="post">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>Usuario</legend>
+        <!-- Text input-->
+<!--        <div class="form-group">-->
+<!--            <label class="col-md-4 control-label" for="id">ID</label>-->
+<!--            <div class="col-md-1">-->
+<!--                <input id="id" name="id" type="text" class="form-control input-md" th:attrappend="readonly=${userForm.id != 0} ? 'readonly' : null" th:field="*{id}">-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="username">Username</label>
+            <div class="col-md-4">
+                <input id="username" name="username" type="text" placeholder="username" class="form-control input-md" th:field="*{name}" required="">
+            </div>
+        </div>
+
+        <!-- Password input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="password">Password</label>
+            <div class="col-md-4">
+                <input id="password" name="password" type="password" placeholder="" class="form-control input-md" th:field="*{password}" th:attrappend="readonly=${userForm.password != null} ? 'readonly' : null">
+            </div>
+        </div>
+
+    </fieldset>
+      <button type="submit" class="btn btn-primary">Save changes</button>
+
+</form>
+
+
+
+
+<!--<form class="form-control w-75 m-auto mt-3"-->
+<!--      action="#"-->
+<!--      th:action="@{/user/new/submit}"-->
+<!--      th:object="${userForm}"-->
+<!--      method="post"-->
+<!--      enctype="multipart/form-data">-->
+<!--  <div class="row">-->
+<!--      <div class="form-group w-25">-->
+<!--        <label for="idUser">id</label>-->
+<!--        <input type="text" class="form-control" id="idUser" placeholder="0" th:field="*{id}" disabled>-->
+<!--      </div>-->
+<!--      <div class="form-group w-25">-->
+<!--      <label for="user">User</label>-->
+<!--      <input type="text" class="form-control" id="user" placeholder="Username" th:field="*{user}">-->
+<!--      </div>-->
+<!--      <div class="form-group w-50">-->
+<!--        <label for="email">eMail</label>-->
+<!--        <input type="email" class="form-control" id="email" placeholder="usuario@dominio.com" th:field="*{email}">-->
+<!--      </div>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--      <div class="form-control w-25">-->
+<!--&lt;!&ndash;          <img th:if="${user.imgSrc} != null" src="https://via.placeholder.com/60x60?text=user">&ndash;&gt;-->
+<!--          <img src="" th:src="${user?.imgSrc} ?: 'https://via.placeholder.com/60x60?text=user'">-->
+<!--&lt;!&ndash;          <div th:if="${user.imgSrc} != null">&ndash;&gt;-->
+<!--&lt;!&ndash;                <img class="img-fluid" src="https://via.placeholder.com/60x60?text=user" width="64px">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div th:if="${user.imgSrc} == null">&ndash;&gt;-->
+<!--&lt;!&ndash;                <img class="img-fluid" src="" th:src="@{${user.imgSrc}}" width="64px">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--      </div>-->
+<!--&lt;!&ndash;      <div class="form-group w-25">&ndash;&gt;-->
+<!--&lt;!&ndash;          <label for="profileIMG">imagen de Perfil</label>&ndash;&gt;-->
+<!--&lt;!&ndash;          <input type="file" class="form-control" name="file" th:field="*{imgSrc}" id="profileIMG">&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--      <div class="form-control w-25">-->
+<!--          <div class="form-check form-switch">-->
+<!--            <label class="form-check-label" for="admin">admin</label>-->
+<!--            <input type="checkbox" class="form-check-input end-0" id="admin" role="switch" th:field="*{admin}">-->
+<!--          </div>-->
+<!--          <div class="form-check form-switch">-->
+<!--            <label class="form-check-label" for="compras">Compras</label>-->
+<!--            <input class="form-check-input end-0" type="checkbox" role="switch" id="compras" th:field="*{compras}">-->
+<!--          </div>-->
+<!--          <div class="form-check form-switch">-->
+<!--            <label class="form-check-label" for="ventas">Ventas</label>-->
+<!--            <input class="form-check-input end-0" type="checkbox" role="switch" id="ventas" th:field="*{ventas}">-->
+<!--          </div>-->
+<!--      </div>-->
+<!--  </div>-->
+
+
+<!--  <button type="submit" class="btn btn-primary">Save changes</button>-->
+<!--</form>-->

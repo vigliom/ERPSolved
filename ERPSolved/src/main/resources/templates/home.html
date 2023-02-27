@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ERPSolved</title>
+    <meta th:replace="~{/fragments/head}">
+</head>
+<body>
+<div class="px-3 py-2 text-bg-dark w-100">
+    <div class="d-flex flex-wrap align-content-lg-between border-0 justify-content-between">
+        <a class="text-white page-link" href="/inicio"><h1>ERPSolved</h1></a>
+        <div class="dropdown" id="myDropdown">
+            <button id="myInput" onclick="myFunction()" href="#" class="dropdownbtn  d-flex align-items-center text-white text-decoration-none dropdown-toggle bg-dark" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="" th:src="@{img/logo.png}" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong th:text="${#authentication.name}">vigliom</strong>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="/login">Log in</a></li>
+                <li><a class="dropdown-item" href="#">Sing in</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <section class="home">
+        <img src="" th:src="@{/img/home/ERP.jpg}">
+        <img src="" th:src="@{/img/home/fast.jpg}">
+        <img src="" th:src="@{/img/home/graficos.png}">
+        <img src="" th:src="@{/img/home/productividad1.jpg}">
+    </section>
+    <section class="about-us">
+        <h1 class="text-center m-3">Que es ERPSolved</h1>
+        <p class="lead text-center m-3 text-black">ERPSolved es un software que te ayudara en todas las partes de la empresa que necesites, para ello
+            se planea implementar mas funciones para que esto sea posible manteniendo la sencillez como nuestra marca,
+            para asi conseguir una mayor adaptabilidad</p>
+        <img src="" th:src="@{/img/home/imac-producto.png}">
+    </section>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center m-5">
+        <div class="cardMia col m-2">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Gratis</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">0€<small class="text-muted fw-light">/mensuales</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>2 Usuarios</li>
+                        <li>Acceso a una demo completa</li>
+                        <li>Prueba de 1 hora</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Registrate gratis</button>
+                </div>
+            </div>
+        </div>
+        <div class="cardMia col m-2">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Pro</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">30€<small class="text-muted fw-light">/mensuales</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Usuarios ilimitados</li>
+                        <li>Control de acceso</li>
+                        <li>Todas las funciones disponibles</li>
+                        <li>Acceso directo a soporte</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-primary">Registrate aqui</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section th:replace="~{/fragments/footer}"></section>
+</body>
+</html>

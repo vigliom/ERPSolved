@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Genera tu factura</title>
+  <style>
+      .container {
+          max-width: 960px;
+      }
+  </style>
+  <meta th:replace="~{fragments/head}">
+</head>
+<body>
+<header th:replace="~{fragments/header}"></header>
+<aside th:replace="~{fragments/asideOffCanvas}"></aside>
+<div class="container h-100">
+  <main>
+    <div class="cardsMia">
+
+      <!--      BUSQUEDA DE CLIENTES-->
+      <div>
+        <div>
+          <input type="search" placeholder="Introducir un nombre de un cliente......"
+                 class="form-select mb-2 searchbox-input" id="buscadorT" name="buscador">
+          <ul class="list-group mb-3 pre-scrollable">
+            <li class="articuloT rounded-3" th:each="terceros : ${listaTerceros}">
+              <a class="hover list-group-item m-1 d-flex flex-wrap align-content-lg-between justify-content-between"
+                 th:href="@{facturas/submit/{id}(id=${terceros.id})}">
+                <p th:text="${terceros.name}">nombre</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!--      PARTE DEL FORMULARIO      -->
+      <div class="cardMia">
+        <div>
+          <h4 class="mb-3 text-primary">CLIENTE</h4>
+          <form class="needs-validation" novalidate=""
+                action="#"
+                th:action="@{/facturas/addFact}"
+                th:object="${terceroForm}"
+                method="post">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="firstName" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="firstName" th:field="*{name}">
+              </div>
+              <div class="col-sm-6">
+                <label for="lastName" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" th:field="*{apellidos}" id="lastName"
+                       placeholder="">
+              </div>
+              <div class="col-sm-6">
+                <label for="cif" class="form-label">CIF</label>
+                <input type="text" class="form-control" id="cif" th:field="*{cif}"
+                       placeholder="">
+              </div>
+              <div class="col-12">
+                <label for="email" class="form-label">Email <span
+                        class="text-muted">(Optional)</span></label>
+                <input type="email" class="form-control" th:field="*{email}" id="email"
+                       placeholder="you@example.com">
+              </div>
+              <div class="col-12">
+                <label for="address" class="form-label">Direccion</label>
+                <input type="text" class="form-control" id="address" th:field="*{direccion}"
+                       placeholder="1234 Main St" required="">
+              </div>
+              <div class="col-12">
+                <label for="address2" class="form-label">Segunda direccion<span
+                        class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" id="address2"
+                       placeholder="Apartment or suite">
+              </div>
+            </div>
+            <hr class="my-4">
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Registrar Facturas</button>
+          </form>
+        </div>
+      </div>
+      <!--      PARTE DE LOS PRODUCTOS    -->
+      <div class="cardMia h-100">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Productos</span>
+          <span th:text="${prodTotal}" class="badge bg-primary rounded-pill">3</span>
+        </h4>
+        <!--            BUSCADOR-->
+        <input type="search" placeholder="Introducir un indicio del nombre......"
+               class="form-select mb-2 searchbox-input" id="buscador" name="buscador">
+        <!--            LISTA DE OBJETOS A BUSCAR-->
+        <div class="">
+          <ul class="list-group mb-3 rounded-3 altura45 overflow-y-scroll">
+            <li class="articulo rounded-3" th:each="producto : ${listaProductos}">
+              <strong th:text="${producto.descripcion}">nombre</strong>
+              <div>
+                <div class="float-left">
+                  <div><span class="text-muted">Cantidad:<span
+                          th:text="${producto.qty}"></span></span></div>
+                  <div><span class="text-muted">Precio:<span
+                          th:text="${producto.precio}"></span>€</span></div>
+                </div>
+                <div class="float-right">
+                  <form th:object="${lineaForm}"
+                        th:action="@{facturas/addP/{id} (id=${producto.id})}"
+                        method="post">
+                    <input id="cantidad" class="input-group-append" type="number" th:field="*{cantidad}">
+                    <button class="rounded-3" type="submit">add</button>
+                  </form>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <ul class="list-group mb-3 rounded-3 altura45 overflow-y-scroll">
+          <li th:each="linea : ${listaFactura}" class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 th:text="${linea.idProd.descripcion}" class="my-0">Product name</h6>
+              <div>
+                <p th:text="${linea.cantidad}" class="text-muted">Brief description</p>
+                <p th:text="${linea.precioLinea}" class="text-muted">Brief description</p>
+              </div>
+            </div>
+          </li>
+          <li th:each="descuento : ${listaDescuentos}"
+              class="list-group-item d-flex justify-content-between bg-light">
+            <div class="text-success">
+              <h6 class="my-0">Descuentos</h6>
+              <small>descuento aplicado en el precio</small>
+            </div>
+            <span th:text="${descuento.porcentaje}" class="text-success">−$5</span>%
+          </li>
+        </ul>
+        <div class="list-group-item d-flex justify-content-between">
+          <span>Total (EUR)</span>
+          <strong><span th:text="${totalFactura}">$20</span>€</strong>
+        </div>
+      </div>
+    </div>
+    <div class="lead py-5 end-0">
+      <h5>Exportar a: </h5>
+      <a href="?format=pdf" target="_blank"><img src="" th:src="@{/img/pdf.png}" alt="exportar a pdf"
+                                                 width="40px"></a>
+    </div>
+  </main>
+</div>
+<footer th:replace="~{fragments/footer}"></footer>
+</body>
+</html>

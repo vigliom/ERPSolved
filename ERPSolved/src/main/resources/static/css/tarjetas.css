@@ -1,0 +1,75 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+a{
+    list-style: none;
+    text-decoration: none;
+}
+body{
+    background-color: #e0e0e0;
+}
+.cardsMia{
+    border-radius: 20px;
+    background: #e0e0e0;
+    box-shadow:  8px 8px 16px #bebebe,
+    -8px -8px 16px #ffffff;
+    padding: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+.cardMia{
+    border-radius: 20px;
+    background: #e0e0e0;
+    box-shadow:  5px 5px 10px #bebebe,
+    -5px -5px 10px #f3f3f3;
+    padding: 16px;
+    /*height: 200px;*/
+    flex: 1 0 200px
+
+}
+.cardMia:hover{
+    transition: .5s ease;
+    background: #cccccc;
+    box-shadow:  5px 5px 10px #9a9a9a,
+    -5px -5px 10px #a6a6a6;
+
+}
+.altura45{
+    height: 45vh;
+}
+.home{
+    display: flex;
+    width: 100%;
+    height: 60vh;
+}
+
+.home img{
+    width: 0px;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: .8;
+    transition: .5s ease;
+}
+.home img:hover{
+    cursor: crosshair;
+    width: 25%;
+    opacity: 1;
+    filter: contrast(120%);
+}
+.about-us img{
+    width: 100%;
+}
+.filtro{
+    display: none;
+}
+
+.hover:hover{
+    background: #cccccc;
+    cursor: pointer;
+    border-color: #646464;
+}

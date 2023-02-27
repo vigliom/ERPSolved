@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log in</title>
+    <link rel="stylesheet" href="webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{css/sign-in.css}">
+    <link rel="canonical" href="webjars/https://getbootstrap.com/docs/5.3/examples/sign-in/">
+    <link href="webjars/bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+<body class="text-center">
+
+<main class="form-signin w-100 m-auto">
+    <div th:if="${param.error}" class="bg-opacity-50 bg-warning rounded-1">
+        Invalid username or password.
+    </div>
+    <div th:if="${param.logout}" class="bg-opacity-10 bg-success rounded-1">
+        You have been logged out.
+    </div>
+    <form th:action="@{/login}" method="post">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <div class="form-floating">
+            <input type="text" class="form-control"  id="floatingInput" name="username" placeholder="username">
+            <label for="floatingInput">name</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary" value="Log in" type="submit">Login</button>
+        <p class="mt-5 mb-3 text-muted">&copy;2022–2023</p>
+    </form>
+</main>
+
+
+
+</body>
+</html>

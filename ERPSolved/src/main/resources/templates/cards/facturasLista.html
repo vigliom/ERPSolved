@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<table class="table table-hover container">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Cif del Cliente</th>
+    <th>Fecha de la factura</th>
+    <th>Cliente</th>
+    <th sec:authorize="hasAuthority('ADMIN')" >Operaciones</th>
+  </thead>
+  <tbody>
+  <tr class="articulo" th:each="factura : ${listaFacturas}">
+    <td th:text="${factura.id}">ID</td>
+    <td th:text="${factura.cif}">precio</td>
+    <td th:text="${factura.fecha}">iva</td>
+    <td> <span th:text="${factura.idTerceros.name}"> descripcion </span> <span th:text="${factura.idTerceros.apellidos}">descripcion</span></td>
+    <td sec:authorize="hasAuthority('ADMIN')">
+      <a type="button" th:href="@{/facturas/edit/{id}(id=${factura.id})}" class="bg-primary text-white btn">
+        Editar
+      </a>
+      <a type="button" th:href="@{/facturas/delete/{id}(id=${factura.id})}" class="bg-primary text-white btn">
+        Borrar
+      </a>
+      <a type="button" href="#" class="bg-primary text-white btn">
+        PDF
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</html>

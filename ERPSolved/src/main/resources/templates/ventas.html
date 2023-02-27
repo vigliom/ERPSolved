@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genera tu factura</title>
+  <style>
+    .container {
+      max-width: 960px;
+    }
+  </style>
+  <meta th:replace="~{fragments/head}">
+</head>
+<body>
+    <header th:replace="~{fragments/header}"></header>
+    <aside th:replace="~{fragments/asideOffCanvas}"></aside>
+    <div class="container cardsMia  text-center text-decoration-none list-unstyled">
+        <a class="page-link cardMia" href="/facturas/all">
+            <div>
+                <h1>Acceder a las facturas</h1>
+            </div>
+        </a>
+        <a class="page-link cardMia" href="/facturas">
+            <div>
+                <h1>Crear nueva factura</h1>
+            </div>
+        </a>
+    </div>
+    <div class="container cardsMia text-center">
+        <div class="page-link cardMia">
+                <h3 class="card-title">facturas totales</h3>
+                <h4 class="text-success card-text" th:text="${totalFacturas}">Null</h4>
+                <span class="card-footer text-muted">Numero total de facturas registradas en el sistema</span>
+        </div>
+        <div class="page-link cardMia" href="/facturas">
+                <h3 class="card-title">Facturas del ultimo mes</h3>
+                <h4 class="text-success card-text" th:text="${totalFacturas}">Null</h4>
+                <span class="card-footer text-muted">Numero total de facturas registradas en el sistema durante el ultimo mes</span>
+        </div>
+        <div class="page-link cardMia" href="/facturas">
+                <h3>Registrar facturas en el libro de cuentas</h3>
+                <span class="card-footer text-muted">Falta implementar</span>
+        </div>
+    </div>
+
+<!--    <div th:replace="~{fragments/factura}"></div>-->
+
+<!--    <footer th:replace="~{home/footer}"></footer>-->
+</body>
+</html>

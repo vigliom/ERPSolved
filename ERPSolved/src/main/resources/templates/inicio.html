@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>inicio</title>
+    <meta th:replace="~{fragments/head}">
+  </head>
+  <body>
+  <header  th:replace="~{fragments/header}"></header>
+  <aside th:replace="~{fragments/asideOffCanvas}"></aside>
+  <main class="container">
+    <div th:replace="~{cards/section1}"></div>
+  </main>
+  <div class="dropdown-divider"></div>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<div class="cardsMia text-center">
+  <div class="cardMia">
+    <a href="/producto" class="page-link text-black">
+<!--      <img class="card-img-top" style="height: 100px;" th:src="@{img/productos.svg}" alt="productos">-->
+    <div class="card-body">
+      <h5 class="card-title">Productos</h5>
+      <p class="card-text">Todos los productos</p>
+      <p class="card-footer" th:text="${nProds}">22</p>
+    </div>
+    </a>
+  </div>
+  <div class="cardMia">
+    <a href="/terceros/clientes" class="page-link text-black">
+<!--      <img class="card-img-top" style="height: 100px;" th:src="@{img/clientes.svg}" alt="Card image cap">-->
+      <div class="card-body">
+        <h5 class="card-title">Clientes</h5>
+        <p class="card-text">Accede a la lista actual de clientes e interactua con ellos</p>
+        <p class="card-footer" th:text="${nClients}">22</p>
+
+      </div>
+    </a>
+  </div>
+  <div class="cardMia">
+    <a href="#" class="page-link text-black">
+<!--      <img class="card-img-top" style="height: 100px;" th:src="@{img/important.svg}" alt="Card image cap">-->
+      <div class="card-body">
+        <h5 class="card-title" style="text-align: center">Tareas Restantes</h5>
+        <h3 class="card-text" style="text-align: center">28</h3>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+    </a>
+  </div>
+  <div class="cardMia text-center">
+    <a href="/ventas" class="page-link text-black">
+    <div class="card-body">
+      <h5 class="card-title">Ventas</h5>
+      <p class="card-text">Comprobar las ultimas ventas de la empresa</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+    </a>
+  </div>
+  <div class="cardMia">
+    <a class="page-link text-black" href="#">
+    <img class="card-img" th:src="@{img/grafico.jpg}" alt="Card image">
+    </a>
+  </div>
+  <div class="cardMia">
+    <a class="page-link text-black" href="/terceros/proveedores">
+    <div class="card-body">
+      <h5 class="card-title">Proveedores</h5>
+      <p class="card-text">Accede los proveedores</p>
+      <p class="card-footer" th:text="${nProv}">22</p>
+
+      <p class="card-text"><small class="text-muted">Last updated 6 mins ago</small></p>
+    </div>
+    </a>
+  </div>
+</div>
+</html>

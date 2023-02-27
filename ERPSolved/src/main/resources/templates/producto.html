@@ -1,0 +1,22 @@
+<!DOCTYPE html >
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <title>Producto</title>
+  <meta th:replace="~{fragments/head}">
+</head>
+<body>
+<header th:replace="~{fragments/header}"></header>
+<aside th:replace="~{fragments/asideOffCanvas}"></aside>
+<main class="container align-content-center">
+  <div th:replace="~{form/busquedaProductos}"></div>
+  <div class="dropdown-divider"></div>
+  <div th:replace="~{cards/productoslista}"></div>
+  <button sec:authorize="hasAuthority('ADMIN')" type="button" class="btn btn-primary ml-0 mt-5 mb-5" data-toggle="modal" data-target="#exampleModalCenter">
+  Añadir un producto
+</button>
+</main>
+
+<!-- Modal -->
+<div th:replace="~{form/formProduct}"></div>
+</body>
+</html>

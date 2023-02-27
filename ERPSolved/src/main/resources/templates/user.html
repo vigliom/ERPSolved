@@ -1,0 +1,26 @@
+<!DOCTYPE html >
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+    <meta th:replace="~{fragments/head}">
+</head>
+<body>
+<header th:replace="~{fragments/header}"></header>
+<aside th:replace="~{fragments/asideOffCanvas}"></aside>
+<main class="container">
+    <div th:replace="~{form/busquedaUser}"></div>
+    <div class="dropdown-divider"></div>
+    <div th:replace="~{cards/usuariosLista}"></div>
+
+    <a sec:authorize="hasAuthority('ADMIN')" href="/user/new" class="btn btn-primary">
+    Añadir usuario
+    </a>
+</main>
+<div class="dropdown-divider"></div>
+
+
+<!-- Modal -->
+<!--<div th:replace="~{form/formularioUser}"></div>-->
+</body>
+</html>

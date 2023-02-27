@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Avatar</th>
+                <th>ID</th>
+                <th>User</th>
+                <th>Rol</th>
+                <th sec:authorize="hasAuthority('ADMIN')">Operaciones</th>
+        </thead>
+        <tbody>
+            <tr class="articulo" th:each="user : ${listaUsuarios}">
+                <td th:text="${user.id}">ID
+                <td><img class="img-fluid" src="" th:src="@{https://ui-avatars.com/api/?name={username}&background=random(username=${user.name})}" style="border-radius: 50%" width="64px"></td>
+                <td th:text="${user.name}">User</td>
+                <td th:text="${user.role}">User</td>
+                <td>
+                    <a type="button" sec:authorize="hasAuthority('ADMIN')" th:href="@{/user/edit/{id}(id=${user.id})}" class="bg-primary text-white btn">
+                        Editar
+                    </a>
+                    <a type="button" sec:authorize="hasAuthority('ADMIN')" th:href="@{/user/delete/{id}(id=${user.id})}"  class="bg-primary text-white btn">
+                        Borrar
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</html>

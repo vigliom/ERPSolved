@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <link rel="stylesheet" href="../css/tarjetas.css">
+</head>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>name</th>
+    <th>surname</th>
+    <th>email</th>
+    <th>address</th>
+    <th>CIF</th>
+    <th>client</th>
+    <th>provider</th>
+    <th>Operaciones</th>
+  </thead>
+  <tbody>
+  <tr th:each="tercero : ${listaTerceros}">
+    <!--                <td><img src="" th:src="@{${user.imgSrc} ?: 'https://via.placeholder.com/60x60?text={username}' (username=${user.user})}" width="64px"></td>-->
+
+    <td th:text="${tercero.id}">ID
+    <td th:text="${tercero.name}">name</td>
+    <td th:text="${tercero.apellidos}">surname</td>
+    <td th:text="${tercero.email}">eMail</td>
+    <td th:text="${tercero.direccion}">address</td>
+    <td th:text="${tercero.cif}">CIF</td>
+    <td th:text="${tercero.cliente}">client</td>
+    <td  sec:authorize="hasAuthority('ADMIN')" th:text="${tercero.prov}">provider</td>
+    <td>
+      <a type="button" sec:authorize="hasAuthority('ADMIN')" th:href="@{/terceros/edit/{id}(id=${tercero.id})}" class="btn-dark btn">
+        Editar
+      </a>
+      <a type="button" sec:authorize="hasAuthority('ADMIN')" th:href="@{/terceros/delete/{id}(id=${tercero.id})}"  class="btn-dark btn">
+        Borrar
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</html>

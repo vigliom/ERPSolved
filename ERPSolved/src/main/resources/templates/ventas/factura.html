@@ -1,0 +1,68 @@
+
+<!----------------SCRIPT DE BUSQUEDA DE PRODUCTOS-------------------->
+          <script th:src="@{/js/buscador.js}"></script>
+<!----------------SCRIPT DE BUSQUEDA DE CLIENTES-------------------->
+          <script th:src="@{/js/buscador1.js}"></script>
+
+
+          <ul class="list-group mb-3 pre-scrollable">
+            <li th:each="linea : ${listaFactura}" class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 th:text="${linea.idProd.descripcion}" class="my-0">Product name</h6>
+                <div>
+                  <p th:text="${linea.cantidad}" class="text-muted">Brief description</p>
+                  <p th:text="${linea.precioLinea}"  class="text-muted">Brief description</p>
+                </div>
+
+
+              </div>
+            </li>
+            <li th:each="descuento : ${listaDescuentos}"class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0">Descuentos</h6>
+                <small>descuento aplicado en el precio</small>
+              </div>
+              <span th:text="${descuento.porcentaje}" class="text-success">−$5</span>%
+            </li>
+          </ul>
+          <div class="list-group-item d-flex justify-content-between">
+            <span>Total (EUR)</span>
+            <strong><span th:text="${totalFactura}">$20</span>€</strong>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+    <div class="lead py-5 end-0">
+      <h5>Exportar a: </h5>
+      <a href="?format=pdf" target="_blank"><img src="" th:src="@{/img/pdf.png}" alt="exportar a pdf" width="40px"></a>
+    </div>
+  </main>
+
+</div>
+
+
+<script src="webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+</script>

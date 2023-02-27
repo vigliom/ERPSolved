@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>precio</th>
+    <th>% de IVA</th>
+    <th>descripcion</th>
+    <th>cantidad</th>
+    <th>familia</th>
+    <th sec:authorize="hasAuthority('ADMIN')" >Operaciones</th>
+  </thead>
+  <tbody>
+  <tr class="articulo" th:each="producto : ${listaProductos}">
+    <td th:text="${producto.id}">ID</td>
+    <td th:text="${producto.precio}">precio</td>
+    <td th:text="${producto.iva}">iva</td>
+    <td th:text="${producto.descripcion}">descripcion</td>
+    <td th:text="${producto.qty}">cantidad</td>
+    <td th:text="${producto.familia}">familia</td>
+    <td sec:authorize="hasAuthority('ADMIN')">
+      <a type="button" th:href="@{/producto/edit/{id}(id=${producto.id})}" class="bg-primary text-white btn">
+        Editar
+    </a>
+      <a type="button" th:href="@{/producto/delete/{id}(id=${producto.id})}" class="bg-primary text-white btn">
+        Borrar
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Genera tu factura</title>
+  <style>
+    .container {
+      max-width: 960px;
+    }
+  </style>
+  <meta th:replace="~{fragments/head}">
+</head>
+<body>
+<header th:replace="~{fragments/header}"></header>
+<aside th:replace="~{fragments/asideOffCanvas}"></aside>
+
+<div th:replace="~{cards/facturasLista}"></div>
+
+
+<!--    <footer th:replace="~{home/footer}"></footer>-->
+</body>
+</html>
